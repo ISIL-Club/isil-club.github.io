@@ -1,89 +1,113 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router";
+import { Menu, X } from "lucide-react";
+import { asset } from "../../../config/club";
+import { CommunityLink } from "./CommunityLink";
 import "./header.css";
-import { useNavigate } from "react-router";
 
-const navLinks = [
-  {
-    id: "about",
-    label: "¿Qué hacemos?",
-    to: "#about",
-  },
-  {
-    id: "activities",
-    label: "Actividades",
-    to: "#activities",
-  },
-  {
-    id: "calculate-promedio",
-    label: "Calculadora de promedios",
-    to: "#calculate-promedio",
-  },
-  {
-    id: "events",
-    label: "Eventos",
-    to: "#events",
-  },
-  {
-    id: "resources",
-    label: "Recursos para programadores",
-    to: "#resources",
-  },
-  {
-    id: "credits",
-    label: "Créditos",
-    to: "#credits",
-  },
+const links = [
+  { id: "about", label: "Comunidad" },
+  { id: "activities", label: "Actividades" },
+  { id: "events", label: "Eventos" },
+  { id: "resources", label: "Recursos" },
 ];
 
 export const Header = () => {
-  const [activeSection, setActiveSection] = useState("home");
-  const navigate = useNavigate();
   const [open, setOpen] = useState(false);
-  const navigateToSection = (sectionId: string) => {
-    if (sectionId == "calculate-promedio") {
-      navigate("/calculadora");
-      return;
+  const [active, setActive] = useState("");
+  const toggle = useRef<HTMLButtonElement>(null);
+  const location = useLocation();
+  useEffect(() => {
+    if (location.pathname !== "/") return;
+    const observer = new IntersectionObserver(
+      (entries) => {
+        for (const entry of entries)
+          if (entry.isIntersecting) setActive(entry.target.id);
+      },
+      { rootMargin: "-15% 0px -60% 0px" },
+    );
+    for (const { id } of links) {
+      const section = document.getElementById(id);
+      if (section) observer.observe(section);
     }
-
-    setOpen(false);
-    if (sectionId === "about") {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-      setActiveSection("home");
-    } else {
-      const element = document.getElementById(sectionId);
-      if (element) {
-        setActiveSection(sectionId);
-        element.scrollIntoView({ behavior: "smooth" });
+    return () => observer.disconnect();
+  }, [location.pathname]);
+  useEffect(() => {
+    if (!open) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setOpen(false);
+        toggle.current?.focus();
       }
-    }
-  };
-
-  const scrollToTop = () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    setActiveSection("home");
-  };
-
+    };
+    const closeOnResize = () => {
+      if (window.innerWidth > 960) setOpen(false);
+    };
+    document.addEventListener("keydown", closeOnEscape);
+    window.addEventListener("resize", closeOnResize);
+    return () => {
+      document.removeEventListener("keydown", closeOnEscape);
+      window.removeEventListener("resize", closeOnResize);
+    };
+  }, [open]);
   return (
-    <header>
-      <nav className="navbar">
-        <div className="navbar-container">
-          <div className="navbar-logo" onClick={scrollToTop} style={{ cursor: "pointer" }}>
-            <img src="icon/logo-isil.jpg" alt="ISIL" />
-          </div>
-
-          <nav className={`navbar-links ${open ? "active" : ""}`}>
-            {navLinks.map(({ label, id }) => (
-              <li onClick={() => navigateToSection(id)} key={id}>
-                <a className={activeSection === id ? "active-link" : ""}>{label}</a>
-              </li>
-            ))}
-          </nav>
-
-          <button className="navbar-toggle" onClick={() => setOpen(!open)}>
-            {open ? "✖" : "☰"}
-          </button>
-        </div>
-      </nav>
+    <header className="site-header">
+      <a className="skip-link" href="#main">
+        Saltar al contenido
+      </a>
+      <div className="container header-inner">
+        <Link
+          className="brand"
+          to="/#home"
+          aria-label="ISIL Developers Club, inicio"
+          onClick={() => setOpen(false)}
+        >
+          <img
+            src={asset("icon/logo-isil.webp")}
+            width="44"
+            height="44"
+            alt=""
+          />
+          <span>
+            ISIL
+            <span className="brand-detail">
+              Developers Club<span className="brand-slash">/</span>
+            </span>
+          </span>
+        </Link>
+        <button
+          ref={toggle}
+          className="menu-toggle"
+          type="button"
+          aria-label={open ? "Cerrar menú" : "Abrir menú"}
+          aria-controls="main-navigation"
+          aria-expanded={open}
+          onClick={() => setOpen(!open)}
+        >
+          {open ? <X aria-hidden="true" /> : <Menu aria-hidden="true" />}
+        </button>
+        <nav
+          id="main-navigation"
+          className={`main-navigation ${open ? "is-open" : ""}`}
+          aria-label="Navegación principal"
+        >
+          {links.map(({ id, label }) => (
+            <Link
+              key={id}
+              to={`/#${id}`}
+              onClick={() => setOpen(false)}
+              aria-current={
+                location.pathname === "/" && active === id
+                  ? "location"
+                  : undefined
+              }
+            >
+              {label}
+            </Link>
+          ))}
+          <CommunityLink className="button button-primary header-join" />
+        </nav>
+      </div>
     </header>
   );
 };
