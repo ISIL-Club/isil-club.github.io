@@ -1,9 +1,10 @@
 # Fondos de los retratos
 
-Se retiró el fondo blanco de cuatro fotografías con la herramienta integrada ImageGen, en modo de edición con transparencia. Los archivos originales se conservan. Los fondos de color se aplican en CSS sobre los recortes PNG.
+Se retiró el fondo blanco de cinco fotografías con la herramienta integrada ImageGen, en modo de edición con transparencia. Los archivos originales se conservan. Los fondos de color se aplican en CSS sobre los recortes PNG.
 
 | Persona | Original | Recorte final | Fondo |
 | --- | --- | --- | --- |
+| Cesar Preciado | `public/img/CesarPreciado.jpeg` | `public/img/portraits/CesarPreciado.png` | Azul pizarra |
 | Rafael Acalá | `public/img/RafaelAcala.jpg` | `public/img/portraits/RafaelAcala.png` | Azul |
 | Juan Yllanes | `public/img/JuanYllanes.png` | `public/img/portraits/JuanYllanes.png` | Verde petróleo |
 | Andy Chung | `public/img/AndyChung.jpeg` | `public/img/portraits/AndyChung.png` | Violeta |

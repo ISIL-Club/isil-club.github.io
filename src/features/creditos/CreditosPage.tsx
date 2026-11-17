@@ -2,6 +2,12 @@ import styles from "./creditos.module.css";
 
 const colaboradores = [
   {
+    nombre: "Cesar Preciado",
+    ocupacion: "CEO",
+    imagen: "img/portraits/CesarPreciado.png",
+    fondo: styles.FondoCesar,
+  },
+  {
     nombre: "Rafael Acalá",
     ocupacion: "UX/UI DESIGNER",
     imagen: "img/portraits/RafaelAcala.png",
@@ -15,7 +21,7 @@ const colaboradores = [
   },
   {
     nombre: "Jair Castañeda",
-    ocupacion: "PROGRAMMER",
+    ocupacion: "CO-FOUNDER & TECHNICAL INSTRUCTOR",
     imagen: "img/JairCastañeda.jpg",
   },
   {
