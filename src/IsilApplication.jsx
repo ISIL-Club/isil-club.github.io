@@ -2,17 +2,15 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { AppLayout } from "./ui/layouts/AppLayout";
-import { isDevelopment } from "./utils/isDevelopment";
 const RoutePosition = () => {
   const { pathname } = useLocation();
   useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [pathname]);
   return null;
 };
 export const IsilApplication = () => {
-  const isDev = isDevelopment() ? "/" : "/landing-page";
   return (
     <>
-      <BrowserRouter basename={isDev}>
+      <BrowserRouter basename="/">
         <RoutePosition />
         <Routes>
           <Route path="/" element={<AppLayout />} />
