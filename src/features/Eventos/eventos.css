@@ -1,239 +1,177 @@
-
 .body {
- height: 100%;
-  padding: 20px;
-  font-family: Arial, sans-serif;
-  color: white;
+  flex: 1;
+  padding: 48px 24px 64px;
+  color: #fff;
   text-align: center;
   background: linear-gradient(90deg, #0abff3 0%, #5d68f3 80%);
   display: flex;
   flex-direction: column;
   align-items: center;
+  font-family: "Poppins", sans-serif;
 }
-
-/* TÍTULOS Y TEXTOS */
-#events-tittle {
-  font-family: 'Poppins', sans-serif;
+.first {
+  width: 100%;
+  max-width: 1100px;
 }
-
 #p-first {
-  font-size: 20px;
-  margin-top: 100px;
-  font-family: 'Poppins', sans-serif;
+  max-width: 1000px;
+  margin: 28px auto 0;
+  font-size: 18px;
+  line-height: 1.85;
 }
-
 #reu {
-  padding-top: 15px;
-  font-size: 30px;
-  text-align: center;
-  color: white;
+  margin: 0 0 24px;
+  padding: 0;
+  font-size: 28px;
+  line-height: 1.3;
+  font-weight: 600;
+  color: #fff;
 }
-
-
 .second {
-  width: 90%;
-  max-width: 900px;
-  background-color: #282828;
-  font-family: 'Poppins', sans-serif;
+  width: min(900px, 100%);
+  margin: 40px auto 0;
+  padding: 32px;
+  background: #282828;
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 15px;
-  margin: 60px auto;
-  padding: 30px 20px;
-  box-sizing: border-box;
+  box-shadow: 0 8px 24px rgba(17, 24, 39, 0.08);
 }
-
-/* BLOQUE BLANCO DE EVENTOS */
 .re-back {
-  background-color: #f4f5f5;
-  color: black;
-  border-radius: 20px;
-  width: 90%;
-  max-width: 780px;
-  margin: 35px auto;
-  padding: 15px;
-  box-sizing: border-box;
+  background: #f4f5f5;
+  color: #111827;
+  border-radius: 12px;
+  padding: 20px;
+  margin: 24px auto;
 }
-
 .re-date {
-  font-size: 20px;
-  color: #3198f5;
+  font-size: 18px;
+  color: #236bc1;
   margin-bottom: 10px;
 }
-
 .re-info {
   width: 100%;
   max-width: 300px;
   margin: 0 auto;
   text-align: left;
 }
-
-/* BOTONES */
 .events-btn {
+  min-height: 44px;
   border-radius: 90px;
-  background-color: #675ff4;
-  margin-top: 15px;
-  padding: 10px 25px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  transition: background 0.3s ease;
+  background: #675ff4;
+  color: #fff;
+  margin: 24px 0 0;
+  padding: 11px 25px;
+  border: 1px solid transparent;
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
-
 .events-btn:hover {
-  background-color: #8078ff;
+  background: #5950e5;
+  box-shadow: 0 4px 16px rgba(103, 95, 244, 0.2);
 }
-
+.events-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
+  box-shadow: none;
+}
+.events-status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #e7e7ef;
+}
+.events-retry {
+  min-height: 44px;
+  margin: 0;
+  padding: 4px 8px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+  font-size: inherit;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
 .events-container {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 25px;
-  margin-top: 20px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
 }
-
+.events-container:empty {
+  display: none;
+}
 .event-card {
+  min-width: 0;
+  padding: 24px;
   background: #fff;
+  border: 1px solid #e9edf4;
   border-radius: 12px;
-  padding: 20px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 12px rgba(0, 0, 0, 0.06);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
 }
-
 .event-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
 }
-
 .event-date {
   font-size: 16px;
-  color: #0EA5E9;
-  margin-bottom: 10px;
+  color: #236bc1;
+  margin-bottom: 12px;
 }
-
 .event-info h3 {
   margin: 0;
   font-size: 20px;
+  line-height: 1.4;
   color: #222;
+  overflow-wrap: anywhere;
 }
-
 .event-info p {
-  margin: 5px 0 0;
+  margin: 8px 0 0;
   font-size: 14px;
+  line-height: 1.7;
   color: #666;
+  overflow-wrap: anywhere;
 }
-
-
-/* 🟢 Tablets grandes y medianas (hasta 1024px) */
 @media (max-width: 1024px) {
-  .second {
-    width: 85%;
-    padding: 25px;
-  }
-
   .events-container {
-    grid-template-columns: 1fr; /* una sola columna */
-    gap: 30px;
-  }
-
-  #p-first {
-    margin-top: 60px;
-  }
-
-  #reu {
-    font-size: 26px;
-  }
-
-  .re-back {
-    width: 95%;
+    grid-template-columns: 1fr;
   }
 }
-
-/* 🔵 Móviles grandes (hasta 768px) */
 @media (max-width: 768px) {
   .body {
-    padding: 15px;
+    padding: 32px 24px 48px;
   }
-
-  .second {
-    width: 95%;
-    margin: 40px auto;
-    padding: 20px 15px;
-  }
-
   #p-first {
-    font-size: 18px;
-    margin-top: 40px;
+    font-size: 16px;
+    margin-top: 24px;
   }
-
+  #p-first br {
+    display: none;
+  }
   #reu {
-    font-size: 24px;
+    font-size: 25px;
   }
-
-  .re-back {
-    width: 100%;
-    padding: 12px;
-  }
-
-  .event-card {
-    padding: 15px;
-  }
-
-  .event-info h3 {
-    font-size: 18px;
-  }
-
-  .event-info p {
-    font-size: 13px;
-  }
-
-  .events-btn {
-    font-size: 0.95rem;
-    padding: 8px 20px;
+  .second {
+    padding: 24px;
+    margin-top: 32px;
   }
 }
-
-/* 🟣 Móviles pequeños (hasta 480px) */
 @media (max-width: 480px) {
   .body {
-    padding: 10px;
+    padding-inline: 20px;
   }
-
   .second {
-    width: 100%;
-    margin: 20px auto;
-    padding: 15px;
+    padding: 24px 18px;
   }
-
-  #p-first {
-    font-size: 16px;
-    margin-top: 30px;
-  }
-
-  #reu {
-    font-size: 22px;
-  }
-
-  .re-back {
-    width: 100%;
-    padding: 10px;
-  }
-
-  .events-container {
-    gap: 20px;
-  }
-
   .event-card {
-    padding: 12px;
+    padding: 20px;
   }
-
   .event-info h3 {
-    font-size: 16px;
+    font-size: 18px;
   }
-
-  .event-info p {
-    font-size: 12px;
-  }
-
   .events-btn {
-    padding: 6px 16px;
-    font-size: 0.85rem;
+    font-size: 14px;
   }
 }

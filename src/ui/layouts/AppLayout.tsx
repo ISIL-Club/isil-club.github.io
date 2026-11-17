@@ -17,11 +17,6 @@ export const AppLayout = () => {
         <SectionWrapper id="activities">
           <ActividadesPage />
         </SectionWrapper>
-        {/*   
-       No agregar esto aqui, está tendra su propia pagina (IsilApplication.jsx)
-      <SectionWrapper id="calculadora">
-          <CalculadoraPage/>
-        </SectionWrapper> */}
         <SectionWrapper id="events">
           <Eventos />
         </SectionWrapper>

@@ -1,0 +1,42 @@
+.title {
+  margin: var(--title-margin, 0);
+  font-family: "Poppins", sans-serif;
+  font-size: var(--title-size, clamp(32px, 4vw, 51.2px));
+  font-weight: 700;
+  line-height: var(--title-line-height, 1.2);
+  letter-spacing: -0.025em;
+  text-align: var(--title-align, center);
+  white-space: pre-line;
+}
+
+.ending {
+  white-space: nowrap;
+}
+
+.label {
+  text-decoration: underline;
+  text-decoration-color: #007bff;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.025em;
+  text-decoration-skip-ink: none;
+}
+
+.slash {
+  position: relative;
+  display: inline-block;
+  width: 0.72em;
+  height: 0.7em;
+  vertical-align: baseline;
+}
+
+/* The brand stroke extends above and below the capitals, like the original artwork. */
+.slash::before {
+  content: "";
+  position: absolute;
+  top: calc(50% + 0.08em);
+  left: 0.12em;
+  width: 0.16em;
+  height: 1.65em;
+  background: currentColor;
+  transform: translateY(-50%) rotate(34deg);
+}
