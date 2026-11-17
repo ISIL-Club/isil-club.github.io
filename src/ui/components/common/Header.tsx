@@ -1,6 +1,5 @@
 import { useState } from "react";
 import "./header.css";
-import { useHref, useNavigate } from "react-router";
 
 const navLinks = [
   {
@@ -12,11 +11,6 @@ const navLinks = [
     id: "activities",
     label: "Actividades",
     to: "#activities",
-  },
-  {
-    id: "calculate-promedio",
-    label: "Calculadora de promedios",
-    to: "#calculate-promedio",
   },
   {
     id: "events",
@@ -37,8 +31,6 @@ const navLinks = [
 
 export const Header = () => {
   const [activeSection, setActiveSection] = useState("home");
-  const navigate = useNavigate();
-  const calculatorHref = useHref("/calculadora");
   const [open, setOpen] = useState(false);
   const navigateToSection = (sectionId: string) => {
     const behavior = window.matchMedia("(prefers-reduced-motion: reduce)")
@@ -46,11 +38,6 @@ export const Header = () => {
       ? "instant"
       : "smooth";
     setOpen(false);
-    if (sectionId == "calculate-promedio") {
-      navigate("/calculadora");
-      return;
-    }
-
     if (sectionId === "about") {
       window.scrollTo({ top: 0, behavior });
       setActiveSection("home");
@@ -104,13 +91,7 @@ export const Header = () => {
             {navLinks.map(({ label, id, to }) => (
               <li key={id}>
                 <a
-                  href={
-                    id === "calculate-promedio"
-                      ? calculatorHref
-                      : id === "about"
-                        ? "#home"
-                        : to
-                  }
+                  href={id === "about" ? "#home" : to}
                   onClick={(event) => {
                     if (
                       event.ctrlKey ||

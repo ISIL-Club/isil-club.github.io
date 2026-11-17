@@ -2,7 +2,6 @@ import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { useLocation } from "react-router";
 import { useEffect } from "react";
 import { AppLayout } from "./ui/layouts/AppLayout";
-import { CalculadoraPage } from "./features/calculadora/CalculadoraPage";
 import { isDevelopment } from "./utils/isDevelopment";
 const RoutePosition = () => {
   const { pathname } = useLocation();
@@ -17,8 +16,7 @@ export const IsilApplication = () => {
         <RoutePosition />
         <Routes>
           <Route path="/" element={<AppLayout />} />
-          <Route path="/calculadora" element={<CalculadoraPage />} />
-          <Route path="*" element={<Navigate to={"/"}/>}/>
+          <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </BrowserRouter>
     </>
