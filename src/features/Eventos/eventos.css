@@ -82,6 +82,26 @@
   background-color: #8078ff;
 }
 
+.events-status {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.events-retry {
+  margin: 0;
+  padding: 4px;
+  background: transparent;
+  border: 0;
+  color: inherit;
+  font-size: inherit;
+  text-decoration: underline;
+}
+
+.events-btn:disabled {
+  opacity: .6;
+  cursor: default;
+}
+
 .events-container {
   display: grid;
   grid-template-columns: repeat(2, 1fr);

@@ -1,36 +1,26 @@
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { useLocation } from "react-router";
 import { useEffect } from "react";
-import {
-  BrowserRouter,
-  Navigate,
-  Route,
-  Routes,
-  useLocation,
-} from "react-router";
 import { AppLayout } from "./ui/layouts/AppLayout";
 import { CalculadoraPage } from "./features/calculadora/CalculadoraPage";
-
+import { isDevelopment } from "./utils/isDevelopment";
 const RoutePosition = () => {
-  const { pathname, hash } = useLocation();
-  useEffect(() => {
-    document.title =
-      pathname === "/calculadora"
-        ? "Calculadora de promedios | ISIL Developers Club"
-        : "ISIL Developers Club — Aprende. Crea. Conecta.";
-    if (hash)
-      document
-        .getElementById(hash.slice(1))
-        ?.scrollIntoView({ behavior: "instant" });
-    else window.scrollTo({ top: 0, behavior: "instant" });
-  }, [pathname, hash]);
+  const { pathname } = useLocation();
+  useEffect(() => { window.scrollTo({ top: 0, behavior: "instant" }); }, [pathname]);
   return null;
 };
-export const IsilApplication = () => (
-  <BrowserRouter basename={import.meta.env.BASE_URL.replace(/\/$/, "") || "/"}>
-    <RoutePosition />
-    <Routes>
-      <Route path="/" element={<AppLayout />} />
-      <Route path="/calculadora" element={<CalculadoraPage />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
-  </BrowserRouter>
-);
+export const IsilApplication = () => {
+  const isDev = isDevelopment() ? "/" : "/landing-page";
+  return (
+    <>
+      <BrowserRouter basename={isDev}>
+        <RoutePosition />
+        <Routes>
+          <Route path="/" element={<AppLayout />} />
+          <Route path="/calculadora" element={<CalculadoraPage />} />
+          <Route path="*" element={<Navigate to={"/"}/>}/>
+        </Routes>
+      </BrowserRouter>
+    </>
+  );
+};

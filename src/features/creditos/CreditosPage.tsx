@@ -1,53 +1,60 @@
-import { Code, Heart } from "lucide-react";
-import { asset } from "../../config/club";
+import styles from "./creditos.module.css";
 
-const team = [
-  { name: "Rafael Acalá", role: "Diseño UX/UI", image: "RafaelAcala" },
-  { name: "Juan Yllanes", role: "Desarrollo", image: "JuanYllanes" },
-  { name: "Jair Castañeda", role: "Desarrollo", image: "JairCastaneda" },
-  { name: "Andy Chung", role: "Desarrollo", image: "AndyChung" },
-  { name: "Ana Rivas", role: "Desarrollo", image: "AnaRivas" },
+const colaboradores = [
   {
-    name: "Matt Castillo",
-    role: "Gestión del proyecto",
-    image: "MattCastillo",
+    nombre: "Rafael Acalá",
+    ocupacion: "UX/UI DESIGNER",
+    imagen: "img/RafaelAcala.jpg",
+  },
+  {
+    nombre: "Juan Yllanes",
+    ocupacion: "PROGRAMER",
+    imagen: "img/JuanYllanes.png",
+  },
+  {
+    nombre: "Jair Castañeda",
+    ocupacion: "PROGRAMMER",
+    imagen: "img/JairCastañeda.jpg",
+  },
+  {
+    nombre: "Andy Chung",
+    ocupacion: "PROGRAMMER",
+    imagen: "img/AndyChung.jpeg",
+  },
+  {
+    nombre: "Ana Rivas",
+    ocupacion: "PROGRAMMER",
+    imagen: "img/AnaRivas.jpg",
+  },
+  {
+    nombre: "Matt Castillo",
+    ocupacion: "PROJECT MANAGER",
+    imagen: "img/matt.png",
   },
 ];
-export const CreditosPage = () => (
-  <div className="container">
-    <div className="team-heading">
-      <span className="eyebrow">PERSONAS DETRÁS DEL CÓDIGO</span>
-      <h2>
-        Una web hecha en equipo<span className="blue-text">.</span>
-      </h2>
-      <p>
-        Este proyecto nace de estudiantes del ISIL Developers Club. Distintas
-        habilidades, una misma idea: construir un lugar donde todos podamos
-        crecer.
-      </p>
-    </div>
-    <div className="team-grid">
-      {team.map(({ name, role, image }) => (
-        <article className="team-member" key={name}>
-          <div className="team-photo">
-            <img
-              src={asset(`img/people/${image}.webp`)}
-              alt={name}
-              width="160"
-              height="160"
-              loading="lazy"
-              decoding="async"
-            />
+
+export const CreditosPage = () => {
+  return (
+    <div className={styles.CreditosPage}>
+      <div className={styles.CreditosImg}>
+        <img src="img/Creditos.png" alt="Créditos" />
+      </div>
+      <h4 className={styles.mensaje}>
+        Este proyecto es desarrollado por estudiantes del ISIL Developers Club. Todo el contenido, herramientas y diseño web son realizados por y para{" "}
+        <br />
+        estudiantes. Nuestro objetivo es construir una comunidad donde todos puedan aprender, compartir y avanzar en su camino como desarrolladores.
+      </h4>
+      <div className={styles.ColaboradoresGrid}>
+        {colaboradores.map((colab) => (
+          <div className={styles.CardColaborador} key={colab.nombre}>
+            <div className={styles.FotoWrapper}>
+              <img className={styles.Fotos} src={colab.imagen} alt={colab.nombre} />
+            </div>
+            <h4 className={styles.Ocupacion}>{colab.ocupacion}</h4>
+            <h4 className={styles.Nombre}>{colab.nombre}</h4>
           </div>
-          <h3>{name}</h3>
-          <p>{role}</p>
-        </article>
-      ))}
+        ))}
+      </div>
     </div>
-    <div className="team-note">
-      <Code size={17} aria-hidden="true" />
-      <span>Código, diseño y muchas ganas de compartir.</span>
-      <Heart size={15} aria-hidden="true" />
-    </div>
-  </div>
-);
+  );
+};
