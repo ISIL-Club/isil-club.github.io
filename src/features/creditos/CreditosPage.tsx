@@ -23,7 +23,7 @@ const colaboradores = [
   {
     nombre: "Jair Castañeda",
     ocupacion: "CO-FOUNDER & TECHNICAL INSTRUCTOR",
-    imagen: "img/JairCastañeda.jpg",
+    imagen: "img/JairCastaneda.jpg",
   },
   {
     nombre: "Andy Chung",
