@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import "./eventos.css";
 import { TodosEventos } from "./Eventostabla";
+import { Title } from "../../ui/components/common/Title";
 
 const formatDate = (dateStr) => {
   try {
@@ -48,7 +49,7 @@ export const Eventos = () => {
   return (
     <div className="body">
       <section className="first">
-        <h1 id="events-tittle"> EVENTOS/</h1>
+        <Title>EVENTOS</Title>
         <p id="p-first">
           Aquí se anunciarán los próximos talleres, hackathons, charlas, webinars y actividades especiales. <br />
           Toda la información estará disponible en la sección de eventos y nuestro Discord.

@@ -1,5 +1,6 @@
 import "./activities.css";
 import { club } from "../../config/club";
+import { Title } from "../../ui/components/common/Title";
 
 const actividadesIcons: { linkIcon: string; descripcion: string; linkRef: string }[] = [
   {
@@ -47,7 +48,7 @@ const actividadesIcons: { linkIcon: string; descripcion: string; linkRef: string
 export const ActividadesPage = () => {
   return (
     <div className="activities-body">
-      <h1>Actividades/</h1>
+      <Title className="activities-title">Actividades</Title>
       <div className="activities-list">
         {actividadesIcons.map(({ descripcion, linkIcon, linkRef }, i) => (
           <div key={i} className="activities-item">

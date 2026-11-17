@@ -1,11 +1,12 @@
 import styles from "./creditos.module.css";
+import { Title } from "../../ui/components/common/Title";
 
 const colaboradores = [
   {
-    nombre: "Cesar Preciado",
+    nombre: "Caesar Preciado",
     ocupacion: "CEO",
-    imagen: "img/portraits/CesarPreciado.png",
-    fondo: styles.FondoCesar,
+    imagen: "img/portraits/CaesarPreciado.png",
+    fondo: styles.FondoCaesar,
   },
   {
     nombre: "Rafael Acalá",
@@ -46,9 +47,7 @@ const colaboradores = [
 export const CreditosPage = () => {
   return (
     <div className={styles.CreditosPage}>
-      <div className={styles.CreditosImg}>
-        <img src="img/Creditos.png" alt="Créditos" />
-      </div>
+      <Title className={styles.titulo}>CRÉDITOS</Title>
       <h4 className={styles.mensaje}>
         Este proyecto es desarrollado por estudiantes del ISIL Developers Club. Todo el contenido, herramientas y diseño web son realizados por y para{" "}
         <br />

@@ -1,4 +1,5 @@
 import "./recursos.css";
+import { Title } from "../../ui/components/common/Title";
 
 
 //PRUEBA DE CONEXION A DISCORD2
@@ -28,7 +29,7 @@ const recursosIcons: { linkIcon: string; descripcion: string; linkRef: string }[
 export const RecursosPage = () => {
     return (
         <div className="recursos-body">
-            <h1>Recursos/</h1>
+            <Title className="recursos-title">Recursos</Title>
             <div className="recursos-list">
                 {recursosIcons.map(({ descripcion, linkIcon, linkRef }, i) => (
                     <div key={i} className="recursos-item">

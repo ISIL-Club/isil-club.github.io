@@ -3,6 +3,7 @@ import { useState } from "react";
 import styles from "./calculadora.module.css";
 import { useHref, useNavigate } from "react-router";
 import { evaluateGrades } from "./grade-calculator.mjs";
+import { Title } from "../../ui/components/common/Title";
 
 export const CalculadoraPage = () => {
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ export const CalculadoraPage = () => {
         </nav>
       </header>
       <main className={styles.main}>
-        <h1>Calculadora de promedios/</h1>
+        <Title as="h1" className={styles.titulo}>Calculadora de promedios</Title>
         <section className={styles.section}>
           <div className={styles.content}>
             <p>

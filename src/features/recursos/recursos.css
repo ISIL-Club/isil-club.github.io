@@ -4,12 +4,8 @@
   padding: 48px 0 64px;
   color: var(--text-color);
 }
-.recursos-body h1 {
-  margin: 0 0 40px;
-  text-align: center;
-  font-size: clamp(32px, 4vw, 51.2px);
-  line-height: 1.2;
-  letter-spacing: -0.025em;
+.recursos-title {
+  --title-margin: 0 0 40px;
 }
 .recursos-list {
   display: grid;
@@ -86,8 +82,8 @@
   .recursos-body {
     padding-block: 32px 48px;
   }
-  .recursos-body h1 {
-    margin-bottom: 32px;
+  .recursos-title {
+    --title-margin: 0 0 32px;
   }
   .recursos-list {
     grid-template-columns: repeat(2, minmax(0, 1fr));

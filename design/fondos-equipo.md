@@ -4,7 +4,7 @@ Se retiró el fondo blanco de cinco fotografías con la herramienta integrada Im
 
 | Persona | Original | Recorte final | Fondo |
 | --- | --- | --- | --- |
-| Cesar Preciado | `public/img/CesarPreciado.jpeg` | `public/img/portraits/CesarPreciado.png` | Azul pizarra |
+| Caesar Preciado | `public/img/CaesarPreciado.jpeg` | `public/img/portraits/CaesarPreciado.png` | Azul pizarra |
 | Rafael Acalá | `public/img/RafaelAcala.jpg` | `public/img/portraits/RafaelAcala.png` | Azul |
 | Juan Yllanes | `public/img/JuanYllanes.png` | `public/img/portraits/JuanYllanes.png` | Verde petróleo |
 | Andy Chung | `public/img/AndyChung.jpeg` | `public/img/portraits/AndyChung.png` | Violeta |
