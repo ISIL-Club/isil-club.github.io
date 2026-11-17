@@ -1,136 +1,120 @@
-
+body.modal-abierto {
+  overflow: hidden;
+}
+.registro-panel::backdrop {
+  background: rgba(13, 17, 23, 0.5);
+}
 .registro-panel {
   position: fixed;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%) scale(0.95);
-  background: #ffffff;
-  border-radius: 20px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-  padding: 2rem;
-  width: 400px;
-  max-width: 90%;
-  z-index: 1000;
-  animation: fadeIn 0.4s ease forwards;
-  font-family: 'Inter', sans-serif;
-  transition: all 0.3s ease;
-}
-
-/* === TITULOS Y TEXTOS === */
-.registro-panel h2 {
-  font-size: 1.4rem;
-  margin-bottom: 1rem;
+  transform: translate(-50%, -50%);
+  width: min(400px, calc(100% - 32px));
+  max-height: calc(100svh - 40px);
+  overflow-y: auto;
+  margin: 0;
+  padding: 28px;
+  background: #fff;
   color: #333;
+  border: 1px solid #e6e8f0;
+  border-radius: 20px;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.22);
+  z-index: 1000;
+  animation: panel-in 0.2s ease-out;
+  font-family: "Poppins", sans-serif;
+}
+.registro-panel h2 {
+  margin: 0 0 20px;
+  font-size: 23px;
+  line-height: 1.35;
   text-align: center;
 }
-
 .registro-panel p {
+  margin: 0 0 24px;
+  padding: 12px 16px;
+  border-radius: 10px;
   background: linear-gradient(135deg, #5b2cff, #4f7cff);
-  color: white;
-  padding: 0.8rem 1rem;
-  border-radius: 10px;
-  font-weight: 500;
-  margin-bottom: 1.5rem;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.7;
   text-align: center;
+  overflow-wrap: anywhere;
 }
-
-/* === INPUTS === */
 .registro-panel input {
+  display: block;
   width: 100%;
-  padding: 0.8rem;
-  margin-bottom: 1rem;
-  border: 1px solid #dcdcdc;
-  border-radius: 10px;
-  font-size: 1rem;
-  transition: all 0.2s ease;
+  min-height: 46px;
+  margin-bottom: 16px;
+  padding: 12px 14px;
+  border: 1px solid #d8dce8;
+  border-radius: 8px;
+  background: #fff;
+  color: #111827;
+  font: inherit;
+  font-size: 16px;
+  text-align: left;
 }
-
+.registro-panel input::placeholder {
+  color: #737b90;
+}
 .registro-panel input:focus {
   border-color: #6a5af9;
-  box-shadow: 0 0 6px rgba(106, 90, 249, 0.3);
+  box-shadow: 0 0 0 3px rgba(106, 90, 249, 0.1);
 }
-
-/* === BOTONES === */
 .registro-panel button {
   width: 100%;
-  padding: 0.9rem;
-  border: none;
-  border-radius: 10px;
-  font-weight: 600;
-  cursor: pointer;
-  font-size: 1rem;
-  transition: all 0.3s ease;
+  min-height: 46px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
 }
-
 .registro-panel button[type="submit"] {
   background: linear-gradient(135deg, #5b2cff, #4f7cff);
-  color: white;
+  color: #fff;
 }
-
 .registro-panel button[type="submit"]:hover {
-  background: linear-gradient(135deg, #6b3fff, #5c8dff);
+  box-shadow: 0 4px 12px rgba(91, 44, 255, 0.18);
 }
-
+.registro-panel button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
 .registro-panel button[type="button"] {
-  margin-top: 0.8rem;
+  margin-top: 12px;
   background: #f0f0f0;
   color: #333;
 }
-
 .registro-panel button[type="button"]:hover {
   background: #e5e5e5;
 }
-
-@keyframes fadeIn {
+.registro-panel.cerrar {
+  animation: panel-out 0.3s ease forwards;
+  pointer-events: none;
+}
+@keyframes panel-in {
   from {
     opacity: 0;
-    transform: translate(-50%, -50%) scale(0.9);
+    transform: translate(-50%, -48%);
   }
   to {
     opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
+    transform: translate(-50%, -50%);
   }
 }
-
-
-
-/* 🟢 Tablets (hasta 768px) */
-@media (max-width: 768px) {
-  .registro-panel {
-    width: 90%;
-    padding: 1.5rem;
-  }
-
-  .registro-panel h2 {
-    font-size: 1.2rem;
-  }
-
-  .registro-panel input,
-  .registro-panel button {
-    font-size: 0.95rem;
+@keyframes panel-out {
+  to {
+    opacity: 0;
+    transform: translate(-50%, -48%);
   }
 }
-
-/* 🔵 Móviles (hasta 480px) */
 @media (max-width: 480px) {
   .registro-panel {
-    width: 95%;
-    padding: 1rem;
-    border-radius: 15px;
+    padding: 24px 20px;
   }
-
   .registro-panel h2 {
-    font-size: 1rem;
-  }
-
-  .registro-panel p {
-    font-size: 0.9rem;
-    padding: 0.6rem;
-  }
-
-  .registro-panel input,
-  .registro-panel button {
-    font-size: 0.9rem;
-    padding: 0.7rem;
+    font-size: 21px;
   }
 }

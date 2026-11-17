@@ -1,141 +1,108 @@
 .recursos-body {
-    padding-left: 256px;
-    padding-right: 256px;
-
-    max-width: 1200px;
-    margin: 0 auto;
-    color: var(--text-color);
+  width: min(880px, calc(100% - 48px));
+  margin: 0 auto;
+  padding: 48px 0 64px;
+  color: var(--text-color);
 }
-
 .recursos-body h1 {
-    text-align: center;
-    padding-top: 40px;
-    padding-bottom: 40px;
+  margin: 0 0 40px;
+  text-align: center;
+  font-size: clamp(32px, 4vw, 51.2px);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
 }
-
 .recursos-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: space-between;
-    align-items: stretch;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 24px;
 }
-
 .recursos-item {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    width: calc(25% - 15px);
-    min-height: 200px;
-    padding: 20px;
-    border-radius: 8px;
-    transition: transform 0.2s ease;
-    box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+  padding: 24px 18px;
+  border: 1px solid #e9eaf3;
+  border-radius: 12px;
+  background: #fff;
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    border-color 0.2s ease;
 }
-
 .recursos-item:hover {
-    transform: translateY(-5px);
+  border-color: #ccc9f7;
+  box-shadow: 0 8px 24px rgba(37, 42, 85, 0.07);
+  transform: translateY(-3px);
 }
-
 .recursos-item img {
-    width: 64px;
-    height: 64px;
-    object-fit: contain;
-    margin-bottom: 15px;
-    flex-shrink: 0;
+  width: 64px;
+  height: 64px;
+  object-fit: contain;
+  margin-bottom: 18px;
+  flex-shrink: 0;
 }
-
 .recursos-item h4 {
-    white-space: pre-line;
-    hyphens: auto;
-    max-width: 100%;
-    margin: 0;
-    line-height: 1.4;
-    text-align: center;
-    flex-grow: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 60px;
-    font-size: 0.95rem;
-    font-weight: 500;
+  white-space: pre-line;
+  overflow-wrap: anywhere;
+  width: 100%;
+  min-height: 48px;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  text-align: center;
+  font-size: 0.95rem;
+  font-weight: 500;
+  line-height: 1.5;
 }
-
 .recursos-item button {
-    background: white;
-    border-color: var(--primary-color);
-    border: 1px solid var(--primary-color);
-    color: var(--text-color);
-    padding: 10px 20px;
-    border-radius: 6px;
-    cursor: pointer;
-    margin-top: 15px;
-    flex-shrink: 0;
-    font-weight: 500;
-    transition: all 0.2s ease;
-    min-width: 80px;
+  min-height: 44px;
+  min-width: 108px;
+  margin: 20px 0 0;
+  padding: 10px 20px;
+  border: 1px solid var(--primary-color);
+  border-radius: 7px;
+  background: #fff;
+  color: var(--text-color);
+  font-weight: 500;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
 }
-
 .recursos-item button:hover {
-    background-color: var(--primary-color);
-    color: white;
-    transform: scale(1.05);
+  background: var(--primary-color);
+  color: #fff;
+  box-shadow: 0 3px 10px rgba(99, 102, 241, 0.14);
 }
-
-/* RESPONSIVE */
-
 @media (max-width: 1100px) {
-    .recursos-item {
-        width: calc(33.333% - 14px);
-    }
-
-    .recursos-body {
-        padding-left: 128px;
-        padding-right: 128px;
-    }
+  .recursos-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
-
-@media (max-width: 900px) {
-    .recursos-item {
-        width: calc(33.333% - 14px);
-        min-height: 180px;
-    }
-
-    .recursos-body {
-        padding-left: 80px;
-        padding-right: 80px;
-    }
-}
-
 @media (max-width: 768px) {
-    .recursos-item {
-        width: calc(50% - 10px);
-        min-height: 180px;
-    }
-
-    .recursos-body {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-
-    .recursos-list {
-        gap: 15px;
-    }
+  .recursos-body {
+    padding-block: 32px 48px;
+  }
+  .recursos-body h1 {
+    margin-bottom: 32px;
+  }
+  .recursos-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+  }
 }
-
 @media (max-width: 480px) {
-    .recursos-item {
-        width: 100%;
-        min-height: 160px;
-    }
-
-    .recursos-body {
-        padding-left: 20px;
-        padding-right: 20px;
-    }
-
-    .recursos-list {
-        gap: 20px;
-    }
+  .recursos-body {
+    width: calc(100% - 40px);
+  }
+  .recursos-list {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+  .recursos-item {
+    padding: 24px;
+  }
 }
