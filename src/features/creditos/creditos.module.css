@@ -69,6 +69,18 @@
   border: 4px solid #fff2;
   border-radius: 50%;
 }
+.FondoRafael {
+  background: radial-gradient(ellipse at 35% 20%, #89a5be, #55758f 60%, #354e69);
+}
+.FondoJuan {
+  background: radial-gradient(ellipse at 35% 20%, #7eaaa4, #4f7d79 60%, #315955);
+}
+.FondoAndy {
+  background: radial-gradient(ellipse at 35% 20%, #a39ac5, #756a9e 60%, #51466f);
+}
+.FondoAna {
+  background: radial-gradient(ellipse at 35% 20%, #c09ca8, #956e82 60%, #6b4b65);
+}
 .Ocupacion {
   margin: 6px 0;
   color: #bcf;

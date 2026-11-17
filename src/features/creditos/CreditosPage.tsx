@@ -4,12 +4,14 @@ const colaboradores = [
   {
     nombre: "Rafael Acalá",
     ocupacion: "UX/UI DESIGNER",
-    imagen: "img/RafaelAcala.jpg",
+    imagen: "img/portraits/RafaelAcala.png",
+    fondo: styles.FondoRafael,
   },
   {
     nombre: "Juan Yllanes",
     ocupacion: "PROGRAMER",
-    imagen: "img/JuanYllanes.png",
+    imagen: "img/portraits/JuanYllanes.png",
+    fondo: styles.FondoJuan,
   },
   {
     nombre: "Jair Castañeda",
@@ -19,12 +21,14 @@ const colaboradores = [
   {
     nombre: "Andy Chung",
     ocupacion: "PROGRAMMER",
-    imagen: "img/AndyChung.jpeg",
+    imagen: "img/portraits/AndyChung.png",
+    fondo: styles.FondoAndy,
   },
   {
     nombre: "Ana Rivas",
     ocupacion: "PROGRAMMER",
-    imagen: "img/AnaRivas.jpg",
+    imagen: "img/portraits/AnaRivas.png",
+    fondo: styles.FondoAna,
   },
   {
     nombre: "Matt Castillo",
@@ -48,7 +52,11 @@ export const CreditosPage = () => {
         {colaboradores.map((colab) => (
           <div className={styles.CardColaborador} key={colab.nombre}>
             <div className={styles.FotoWrapper}>
-              <img className={styles.Fotos} src={colab.imagen} alt={colab.nombre} />
+              <img
+                className={[styles.Fotos, colab.fondo].filter(Boolean).join(" ")}
+                src={colab.imagen}
+                alt={colab.nombre}
+              />
             </div>
             <h4 className={styles.Ocupacion}>{colab.ocupacion}</h4>
             <h4 className={styles.Nombre}>{colab.nombre}</h4>
