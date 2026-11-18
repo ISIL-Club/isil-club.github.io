@@ -1,12 +1,9 @@
 import styles from "./creditos.module.css";
 import { Title } from "../../ui/components/common/Title";
+import { ColaboradorCard, type Colaborador } from "./ColaboradorCard";
+import linkedinProfiles from "./linkedin-profiles.json";
 
-type Colaborador = {
-  nombre: string;
-  ocupacion: string;
-  imagen: string;
-  fondo?: string;
-};
+const perfiles: Record<string, Colaborador["perfil"]> = linkedinProfiles.profiles;
 
 const fundadores: Colaborador[] = [
   {
@@ -14,11 +11,13 @@ const fundadores: Colaborador[] = [
     ocupacion: "FOUNDER & ORGANIZER",
     imagen: "img/portraits/CaesarPreciado.png",
     fondo: styles.FondoCaesar,
+    perfil: perfiles.caesar,
   },
   {
     nombre: "Jair Castañeda",
     ocupacion: "CO-FOUNDER & TECHNICAL INSTRUCTOR",
     imagen: "img/JairCastaneda.jpg",
+    perfil: perfiles.jair,
   },
 ];
 
@@ -27,6 +26,7 @@ const colaboradores: Colaborador[] = [
     nombre: "Matt Castillo",
     ocupacion: "PROJECT MANAGER",
     imagen: "img/matt.png",
+    perfil: perfiles.matt,
   },
   {
     nombre: "Rafael Acalá",
@@ -39,40 +39,23 @@ const colaboradores: Colaborador[] = [
     ocupacion: "PROGRAMMER",
     imagen: "img/portraits/JuanYllanes.png",
     fondo: styles.FondoJuan,
+    perfil: perfiles.juan,
   },
   {
     nombre: "Andy Chung",
     ocupacion: "PROGRAMMER",
     imagen: "img/portraits/AndyChung.png",
     fondo: styles.FondoAndy,
+    perfil: perfiles.andy,
   },
   {
     nombre: "Ana Rivas",
     ocupacion: "PROGRAMMER",
     imagen: "img/portraits/AnaRivas.png",
     fondo: styles.FondoAna,
+    perfil: perfiles.ana,
   },
 ];
-
-const ColaboradorCard = ({
-  persona,
-  destacado = false,
-}: {
-  persona: Colaborador;
-  destacado?: boolean;
-}) => (
-  <li className={[styles.CardColaborador, destacado && styles.Fundador].filter(Boolean).join(" ")}>
-    <div className={styles.FotoWrapper}>
-      <img
-        className={[styles.Fotos, persona.fondo].filter(Boolean).join(" ")}
-        src={persona.imagen}
-        alt={persona.nombre}
-      />
-    </div>
-    <h4 className={styles.Nombre}>{persona.nombre}</h4>
-    <p className={styles.Ocupacion}>{persona.ocupacion}</p>
-  </li>
-);
 
 export const CreditosPage = () => {
   return (

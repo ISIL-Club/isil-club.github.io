@@ -4,6 +4,14 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+    inputs:
+      refresh_profiles:
+        description: Extraer de nuevo los perfiles de LinkedIn antes de publicar
+        type: boolean
+        default: false
+  schedule:
+    # Día 1 de cada mes a las 05:17 en Perú (UTC-5).
+    - cron: '17 10 1 * *'
 
 permissions:
   contents: read
@@ -13,13 +21,62 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  refresh:
+    name: Actualizar perfiles de LinkedIn
+    if: >-
+      github.ref == 'refs/heads/main' &&
+      (github.event_name == 'schedule' ||
+       (github.event_name == 'workflow_dispatch' && inputs.refresh_profiles))
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    outputs:
+      commit: ${{ steps.updated.outputs.commit }}
+    steps:
+      - name: Obtener main
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Preparar Node.js
+        uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+
+      - name: Verificar selección de perfiles
+        run: node --test scripts/linkedin-profile.test.mjs
+
+      - name: Extraer perfiles con Apify
+        env:
+          APIFY_TOKEN: ${{ secrets.APIFY_TOKEN }}
+        run: npm run profiles:refresh
+
+      - name: Guardar perfiles actualizados en main
+        id: updated
+        run: |
+          if ! git diff --quiet -- src/features/creditos/linkedin-profiles.json; then
+            git config user.name 'github-actions[bot]'
+            git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+            git add src/features/creditos/linkedin-profiles.json
+            git commit -m 'Actualizar perfiles de LinkedIn'
+            git pull --rebase origin main
+            git push origin HEAD:main
+          fi
+          echo "commit=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
   build:
     name: Compilar
+    needs: refresh
+    if: ${{ !cancelled() && (needs.refresh.result == 'success' || needs.refresh.result == 'skipped') }}
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Obtener código
         uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          ref: ${{ needs.refresh.outputs.commit || github.sha }}
 
       - name: Preparar Node.js
         uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
@@ -29,6 +86,9 @@ jobs:
 
       - name: Instalar dependencias
         run: npm ci
+
+      - name: Verificar selección de perfiles
+        run: node --test scripts/linkedin-profile.test.mjs
 
       - name: Generar docs desde src y public
         run: npm run build
@@ -40,7 +100,7 @@ jobs:
 
   deploy:
     name: Publicar
-    if: github.ref == 'refs/heads/main'
+    if: ${{ !cancelled() && github.ref == 'refs/heads/main' && needs.build.result == 'success' }}
     needs: build
     runs-on: ubuntu-latest
     timeout-minutes: 10

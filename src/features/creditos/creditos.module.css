@@ -137,6 +137,132 @@
 .Fundador .Ocupacion {
   min-height: 38px;
 }
+.ProfileTrigger {
+  position: relative;
+  display: block;
+  margin: 0 0 16px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+}
+.ProfileTrigger .FotoWrapper {
+  margin: 0;
+}
+.ProfileTrigger:focus-visible {
+  outline: 3px solid #38bdf8;
+  outline-offset: 5px;
+}
+.ProfileHint {
+  position: absolute;
+  right: 2px;
+  bottom: 5px;
+  display: grid;
+  place-items: center;
+  width: 25px;
+  height: 25px;
+  border: 3px solid #1a1a2e;
+  border-radius: 50%;
+  background: #0284c7;
+  color: #fff;
+}
+.WorkProfile {
+  position: fixed;
+  inset: auto;
+  width: min(220px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  margin: 0;
+  padding: 12px 14px;
+  overflow: auto;
+  border: 1px solid #bae6fd;
+  border-top: 2px solid #38bdf8;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #ecfaff, #fff 65%);
+  color: #17273e;
+  box-shadow: 0 10px 28px #06152e40;
+  font: 400 12px/1.5 Poppins, sans-serif;
+  text-align: left;
+}
+.WorkProfile:focus-visible {
+  outline: 2px solid #38bdf8;
+  outline-offset: 3px;
+}
+.ProfileHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: -4px -4px 3px 0;
+  color: #1688c1;
+}
+.ProfileHeader > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.ProfileClose {
+  display: grid;
+  place-items: center;
+  width: 24px;
+  min-height: 24px;
+  padding: 0;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: #568297;
+}
+.ProfileClose:hover {
+  background: #dff4ff;
+  color: #0369a1;
+}
+.JobTitle {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+.Company {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  margin: 0;
+  color: #536278;
+  font-size: 11px;
+  overflow-wrap: anywhere;
+}
+.Headline {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  overflow: hidden;
+  font-size: 13px;
+  font-weight: 500;
+}
+.Company svg {
+  flex-shrink: 0;
+  color: #1688c1;
+}
+.ProfileLink {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  width: fit-content;
+  min-height: 26px;
+  margin-top: 5px;
+  color: #0479ba;
+  font-size: 11px;
+  font-weight: 500;
+}
+.ProfileLink:hover {
+  color: #025b8d;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
 @media (max-width: 1100px) {
   .ColaboradoresGrid {
     gap: 36px 32px;

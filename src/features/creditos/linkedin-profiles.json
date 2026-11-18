@@ -1,0 +1,37 @@
+{
+  "source": "apify/supreme_coder/linkedin-profile-scraper",
+  "fetchedAt": "2026-11-18T19:38:22.519Z",
+  "profiles": {
+    "jair": {
+      "url": "https://www.linkedin.com/in/castaneda-jair/",
+      "title": "GenAI",
+      "company": "FractalUp"
+    },
+    "andy": {
+      "url": "https://www.linkedin.com/in/andy-chung-8b461b345/",
+      "headline": "Modelador 3D | Game Delevopment | Trainne",
+      "displayHeadline": "3D Modeler | Game Development | Trainee"
+    },
+    "matt": {
+      "url": "https://www.linkedin.com/in/mattcastillo23/",
+      "title": "Support Analyst",
+      "company": "INTEGRATED SERVICES FOR GAMING S.A.C."
+    },
+    "juan": {
+      "url": "https://www.linkedin.com/in/juanyllanes/",
+      "title": "Practicante en Desarrollo de Software",
+      "company": "Partner Tech",
+      "displayTitle": "Software Development Intern"
+    },
+    "caesar": {
+      "url": "https://www.linkedin.com/in/cesarpreciadocalderon/",
+      "headline": "Analista de TI en Universidad Politécnica del Perú",
+      "displayHeadline": "IT Analyst at Universidad Politécnica del Perú"
+    },
+    "ana": {
+      "url": "https://www.linkedin.com/in/anarivasubaldo/",
+      "title": "QA Automation Engineer",
+      "company": "NTT DATA"
+    }
+  }
+}

@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "profiles:sync": "node scripts/sync-linkedin-profiles.mjs",
+    "profiles:refresh": "node scripts/sync-linkedin-profiles.mjs --scrape"
   },
   "dependencies": {
     "lucide-react": "^0.545.0",
