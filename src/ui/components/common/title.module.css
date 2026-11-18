@@ -13,14 +13,6 @@
   white-space: nowrap;
 }
 
-.label {
-  text-decoration: underline;
-  text-decoration-color: #007bff;
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.025em;
-  text-decoration-skip-ink: none;
-}
-
 .slash {
   position: relative;
   display: inline-block;

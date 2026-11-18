@@ -11,13 +11,13 @@ type Colaborador = {
 const fundadores: Colaborador[] = [
   {
     nombre: "Caesar Preciado",
-    ocupacion: "Fundador",
+    ocupacion: "FOUNDER & ORGANIZER",
     imagen: "img/portraits/CaesarPreciado.png",
     fondo: styles.FondoCaesar,
   },
   {
     nombre: "Jair Castañeda",
-    ocupacion: "Cofundador y organizador",
+    ocupacion: "CO-FOUNDER & TECHNICAL INSTRUCTOR",
     imagen: "img/JairCastaneda.jpg",
   },
 ];
@@ -25,30 +25,30 @@ const fundadores: Colaborador[] = [
 const colaboradores: Colaborador[] = [
   {
     nombre: "Matt Castillo",
-    ocupacion: "Gestión del proyecto",
+    ocupacion: "PROJECT MANAGER",
     imagen: "img/matt.png",
   },
   {
     nombre: "Rafael Acalá",
-    ocupacion: "Diseño UX/UI",
+    ocupacion: "UX/UI DESIGNER",
     imagen: "img/portraits/RafaelAcala.png",
     fondo: styles.FondoRafael,
   },
   {
     nombre: "Juan Yllanes",
-    ocupacion: "Desarrollo",
+    ocupacion: "PROGRAMMER",
     imagen: "img/portraits/JuanYllanes.png",
     fondo: styles.FondoJuan,
   },
   {
     nombre: "Andy Chung",
-    ocupacion: "Desarrollo",
+    ocupacion: "PROGRAMMER",
     imagen: "img/portraits/AndyChung.png",
     fondo: styles.FondoAndy,
   },
   {
     nombre: "Ana Rivas",
-    ocupacion: "Desarrollo",
+    ocupacion: "PROGRAMMER",
     imagen: "img/portraits/AnaRivas.png",
     fondo: styles.FondoAna,
   },
@@ -85,7 +85,7 @@ export const CreditosPage = () => {
       </p>
 
       <section className={styles.Grupo} aria-labelledby="fundadores-titulo">
-        <h3 className={styles.Subtitulo} id="fundadores-titulo">Fundadores</h3>
+        <h3 className={styles.Subtitulo} id="fundadores-titulo">Founders</h3>
         <ul className={styles.FundadoresGrid}>
           {fundadores.map((persona) => (
             <ColaboradorCard key={persona.nombre} persona={persona} destacado />
@@ -94,7 +94,7 @@ export const CreditosPage = () => {
       </section>
 
       <section className={`${styles.Grupo} ${styles.Equipo}`} aria-labelledby="equipo-titulo">
-        <h3 className={styles.Subtitulo} id="equipo-titulo">Equipo del proyecto</h3>
+        <h3 className={styles.Subtitulo} id="equipo-titulo">Project team</h3>
         <ul className={styles.ColaboradoresGrid}>
           {colaboradores.map((persona) => (
             <ColaboradorCard key={persona.nombre} persona={persona} />
