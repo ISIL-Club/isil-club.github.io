@@ -22,32 +22,65 @@
 .mensaje br {
   display: none;
 }
-.ColaboradoresGrid {
-  display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 40px 48px;
-  width: min(900px, 100%);
+.Grupo {
+  width: min(1000px, 100%);
   margin: 40px auto 0;
-  align-items: start;
-  justify-items: center;
-  background-color: rgba(26, 26, 46);
+}
+.Equipo {
+  margin-top: 44px;
+  padding-top: 32px;
+  border-top: 1px solid #ffffff14;
+}
+.Subtitulo {
+  margin: 0;
+  color: #b9bee0;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-align: center;
+  text-transform: uppercase;
+}
+.FundadoresGrid,
+.ColaboradoresGrid {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0;
+  list-style: none;
+}
+.FundadoresGrid {
+  gap: 32px 96px;
+  width: min(800px, 100%);
+  margin: 24px auto 0;
+}
+.ColaboradoresGrid {
+  gap: 36px 64px;
+  width: min(900px, 100%);
+  margin: 28px auto 0;
 }
 .CardColaborador {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100%;
+  flex: 0 1 220px;
   max-width: 220px;
   min-width: 0;
   transition: transform 0.2s ease;
+}
+.Fundador {
+  --marco-size: 170px;
+  --foto-size: 154px;
+  flex-basis: 280px;
+  max-width: 280px;
 }
 .CardColaborador:hover {
   transform: translateY(-4px);
 }
 .FotoWrapper {
-  width: 146px;
-  height: 146px;
-  margin-bottom: 14px;
+  width: var(--marco-size, 146px);
+  height: var(--marco-size, 146px);
+  margin-bottom: 16px;
   border-radius: 50%;
   overflow: hidden;
   background: linear-gradient(to bottom, #6366f1, #3b82f6);
@@ -57,8 +90,8 @@
 }
 .Fotos {
   box-sizing: content-box;
-  width: 130px;
-  height: 130px;
+  width: var(--foto-size, 130px);
+  height: var(--foto-size, 130px);
   object-fit: cover;
   border: 4px solid #fff2;
   border-radius: 50%;
@@ -79,31 +112,34 @@
   background: radial-gradient(ellipse at 35% 20%, #c09ca8, #956e82 60%, #6b4b65);
 }
 .Ocupacion {
-  margin: 6px 0;
+  margin: 7px 0 0;
   color: #bcf;
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.035em;
+  line-height: 1.6;
   text-align: center;
+  text-transform: uppercase;
+  text-wrap: balance;
 }
 .Nombre {
   margin: 0;
   color: #fff;
-  font-size: 17px;
+  font-size: 18px;
   font-weight: 600;
+  line-height: 1.5;
   text-align: center;
+  text-wrap: balance;
 }
-.colab2 {
-  margin-top: 0;
+.Fundador .Nombre {
+  font-size: 20px;
 }
-.content {
-  display: flex;
-  justify-content: center;
+.Fundador .Ocupacion {
+  min-height: 38px;
 }
 @media (max-width: 1100px) {
   .ColaboradoresGrid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 36px;
+    gap: 36px 32px;
   }
 }
 @media (max-width: 700px) {
@@ -120,23 +156,42 @@
   .mensaje br {
     display: none;
   }
-  .ColaboradoresGrid {
-    grid-template-columns: 1fr;
-    gap: 32px;
+  .Grupo {
     margin-top: 32px;
   }
+  .Equipo {
+    padding-top: 28px;
+  }
+  .FundadoresGrid {
+    gap: 20px;
+  }
+  .ColaboradoresGrid {
+    gap: 28px 24px;
+    margin-top: 24px;
+  }
+  .CardColaborador {
+    flex-basis: calc(50% - 12px);
+  }
+  .Fundador {
+    --marco-size: clamp(112px, 31vw, 138px);
+    --foto-size: calc(var(--marco-size) - 16px);
+    flex: 1 1 0;
+  }
   .FotoWrapper {
-    width: 108px;
-    height: 108px;
+    width: var(--marco-size, 108px);
+    height: var(--marco-size, 108px);
   }
   .Fotos {
-    width: 92px;
-    height: 92px;
+    width: var(--foto-size, 92px);
+    height: var(--foto-size, 92px);
   }
   .Ocupacion {
     font-size: 11px;
   }
   .Nombre {
-    font-size: 16px;
+    font-size: 15px;
+  }
+  .Fundador .Nombre {
+    font-size: 17px;
   }
 }
